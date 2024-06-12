@@ -42,8 +42,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    needs: push-artifacts
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: test-build, push-artifacts
     steps:
      - name: Deploying to gh-pages
         uses: peaceiris/actions-gh-pages@v3
